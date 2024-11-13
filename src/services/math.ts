@@ -3,6 +3,18 @@ import { getParams } from '../controllers/mathOperations';
 import { MathOperation } from '../models/math';
 import { Operations } from '../models/operations';
 
+/**
+ * The function `mathService` performs basic math operations based on the input parameters and returns
+ * the result or an error message.
+ * @param {Request} req - The `req` parameter in your `mathService` function is of type `Request`,
+ * which likely represents the incoming HTTP request object containing information such as headers,
+ * parameters, and body data. This parameter is used to extract the necessary data for performing
+ * mathematical operations in your function.
+ * @param {Response} res - The `res` parameter in the `mathService` function is an object representing
+ * the HTTP response that the function will send back to the client. It is of type `Response`, which is
+ * typically provided by a web framework like Express.js in Node.js applications. The `res` object has
+ * methods like
+ */
 const mathService = async (req: Request, res: Response): Promise<void> => {
   try {
     const mathObj: MathOperation = getParams(req);
