@@ -2,6 +2,7 @@ export enum Routes {
   root = '/',
   health = '/health',
   math = '/math',
+  apiDocs = '/api-docs',
 }
 
 export enum Version {

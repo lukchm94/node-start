@@ -29,12 +29,6 @@ const getParams = (req) => {
         num2 = parseInt(req.query.num2);
         operation = formatAdd(req.query.operation);
     }
-    else if (req.method === 'POST') {
-        console.log('Getting numbers from req.body');
-        num1 = parseInt(req.body.num1);
-        num2 = parseInt(req.body.num2);
-        operation = req.body.operation;
-    }
     else {
         throw new Error('Unsupported method');
     }

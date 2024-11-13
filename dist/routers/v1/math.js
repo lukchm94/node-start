@@ -24,12 +24,4 @@ router.get(routes_1.Routes.root, (req, res) => __awaiter(void 0, void 0, void 0,
         console.error('Error in math route: ', err);
     }
 }));
-router.post(routes_1.Routes.root, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield (0, math_1.mathService)(req, res);
-    }
-    catch (err) {
-        console.error('Error in math route: ', err);
-    }
-}));
 exports.default = router;

@@ -6,6 +6,7 @@ var Routes;
     Routes["root"] = "/";
     Routes["health"] = "/health";
     Routes["math"] = "/math";
+    Routes["apiDocs"] = "/api-docs";
 })(Routes || (exports.Routes = Routes = {}));
 var Version;
 (function (Version) {
