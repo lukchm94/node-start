@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { add } = require('../controllers/add');
+const { mathController } = require('../controllers/mathOperations');
 const resp = 'Result of addition of';
 
 router.get('/add', async (req, res) => {
-  await add(req, res);
-  console.log('The body of the request is: ', req.body);
+  try {await mathController(req, res);
+  console.log('The body of the request is: ', req.body);} catch (err) {console.error('Error in math route: ', err)}
 });
 
-router.post('/add', async (req, res) => {
+router.post('/math', async (req, res) => {
   // console.log('Request Headers:', req.headers);
-  await add(req, res);
+  await mathController(req, res);
   console.log('The body of the request is: ', req.body);
 });
 
