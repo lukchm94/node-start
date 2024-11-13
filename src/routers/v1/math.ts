@@ -1,9 +1,10 @@
 import express, { Request, Response, Router } from 'express';
-import { mathService } from '../services/math';
+import { mathService } from '../../services/math';
+import { Routes } from '../routes';
 
 const router: Router = express.Router();
 
-router.get('/', async (req: Request, res: Response): Promise<void> => {
+router.get(Routes.root, async (req: Request, res: Response): Promise<void> => {
   try {
     await mathService(req, res);
   } catch (err) {
@@ -11,7 +12,7 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-router.post('/', async (req: Request, res: Response): Promise<void> => {
+router.post(Routes.root, async (req: Request, res: Response): Promise<void> => {
   try {
     await mathService(req, res);
   } catch (err) {

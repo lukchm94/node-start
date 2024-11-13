@@ -28,8 +28,6 @@ const getParams = (req) => {
         num1 = parseInt(req.query.num1);
         num2 = parseInt(req.query.num2);
         operation = formatAdd(req.query.operation);
-        console.log(`req.query.operation: ${req.query.operation}`);
-        console.log(`Operation is: ${operation}`);
     }
     else if (req.method === 'POST') {
         console.log('Getting numbers from req.body');

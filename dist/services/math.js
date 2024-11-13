@@ -1,9 +1,18 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mathService = void 0;
 const mathOperations_1 = require("../controllers/mathOperations");
 const operations_1 = require("../models/operations");
-const mathService = async (req, res) => {
+const mathService = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const mathObj = (0, mathOperations_1.getParams)(req);
         switch (mathObj.operation) {
@@ -37,5 +46,5 @@ const mathService = async (req, res) => {
             res.status(400).json({ error: `Server error: ${err}` });
         }
     }
-};
+});
 exports.mathService = mathService;

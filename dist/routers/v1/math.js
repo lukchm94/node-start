@@ -13,9 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const math_1 = require("../services/math");
+const math_1 = require("../../services/math");
+const routes_1 = require("../routes");
 const router = express_1.default.Router();
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get(routes_1.Routes.root, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, math_1.mathService)(req, res);
     }
@@ -23,7 +24,7 @@ router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.error('Error in math route: ', err);
     }
 }));
-router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post(routes_1.Routes.root, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, math_1.mathService)(req, res);
     }
