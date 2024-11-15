@@ -9,12 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mathService = void 0;
-const mathOperations_1 = require("../controllers/mathOperations");
+exports.mathService = mathService;
 const operations_1 = require("../models/operations");
-const mathService = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const mathObj = (0, mathOperations_1.getParams)(req);
+function mathService(mathObj) {
+    return __awaiter(this, void 0, void 0, function* () {
         switch (mathObj.operation) {
             case operations_1.Operations.add:
                 mathObj.result = mathObj.num1 + mathObj.num2;
@@ -27,7 +25,7 @@ const mathService = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 break;
             case operations_1.Operations.divide:
                 if (mathObj.num2 === 0) {
-                    res.status(400).json({ error: 'Division by zero is not allowed' });
+                    throw new Error('Division by zero is not allowed');
                 }
                 mathObj.result = mathObj.num1 / mathObj.num2;
                 break;
@@ -35,16 +33,6 @@ const mathService = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 throw new Error('Unsupported operation');
         }
         console.log(`Result is: ${mathObj.num1} ${mathObj.operation} ${mathObj.num2} = ${mathObj.result}`);
-        res.status(200).json({ result: mathObj.result });
-    }
-    catch (err) {
-        console.log(err);
-        if (err instanceof Error) {
-            res.status(400).json({ error: err.message });
-        }
-        else {
-            res.status(400).json({ error: `Server error: ${err}` });
-        }
-    }
-});
-exports.mathService = mathService;
+        return mathObj.result;
+    });
+}

@@ -1,4 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { getParams } from '../../controllers/mathOperations';
+import { MathOperation } from '../../models/math';
 import { mathService } from '../../services/math';
 import { Routes } from '../routes';
 
@@ -49,9 +51,12 @@ const router: Router = express.Router();
  */
 router.get(Routes.root, async (req: Request, res: Response): Promise<void> => {
   try {
-    await mathService(req, res);
+    const mathOperation: MathOperation = await getParams(req);
+    const result: number = await mathService(mathOperation);
+    res.json(result);
   } catch (err) {
     console.error('Error in math route: ', err);
+    res.status(400).json({ error: err });
   }
 });
 
