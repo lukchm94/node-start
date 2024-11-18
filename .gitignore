@@ -3,3 +3,7 @@
 /dist
 
 /.vscode
+
+/node_modules/*
+
+/dis/*

@@ -1,3 +1,7 @@
+import {
+  DivisionByZeroError,
+  UnsupportedOperationError,
+} from '../models/errors';
 import { MathOperation } from '../models/math';
 import { Operations } from '../models/operations';
 
@@ -14,12 +18,12 @@ async function mathService(mathObj: MathOperation): Promise<number> {
       break;
     case Operations.divide:
       if (mathObj.num2 === 0) {
-        throw new Error('Division by zero is not allowed');
+        throw new DivisionByZeroError();
       }
       mathObj.result = mathObj.num1 / mathObj.num2;
       break;
     default:
-      throw new Error('Unsupported operation');
+      throw new UnsupportedOperationError(mathObj.operation);
   }
 
   console.log(

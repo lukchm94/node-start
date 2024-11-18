@@ -1,4 +1,4 @@
-import express, { Request, Response, Router } from 'express';
+import express, { NextFunction, Request, Response, Router } from 'express';
 import { getParams } from '../../controllers/mathOperations';
 import { MathOperation } from '../../models/math';
 import { mathService } from '../../services/math';
@@ -49,15 +49,17 @@ const router: Router = express.Router();
  *       400:
  *         description: Invalid input or operation
  */
-router.get(Routes.root, async (req: Request, res: Response): Promise<void> => {
-  try {
-    const mathOperation: MathOperation = await getParams(req);
-    const result: number = await mathService(mathOperation);
-    res.json(result);
-  } catch (err) {
-    console.error('Error in math route: ', err);
-    res.status(400).json({ error: err });
+router.get(
+  Routes.root,
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const mathOperation: MathOperation = await getParams(req);
+      const result: number = await mathService(mathOperation);
+      res.json({ result: result });
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 export default router;

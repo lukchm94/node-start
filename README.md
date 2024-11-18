@@ -62,6 +62,8 @@ cd node-start
 Install the required dependencies by running:
 
 ```bash
+nvm use 20
+
 npm install
 ```
 
