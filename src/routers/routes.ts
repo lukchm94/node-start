@@ -3,6 +3,7 @@ export enum Routes {
   health = '/health',
   math = '/math',
   apiDocs = '/api-docs',
+  isEven = '/is-even',
 }
 
 export enum Version {
