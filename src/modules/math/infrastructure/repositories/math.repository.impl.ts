@@ -1,8 +1,8 @@
 import {
   DivisionByZeroError,
   UnsupportedOperationError,
-} from '../../../../models/errors';
-import { Operations } from '../../../../models/operations';
+} from '../../../../shared/models/errors';
+import { Operations } from '../../../../shared/models/operations';
 import { MathOperations } from '../../domain/Math-operation';
 import { MathRepository } from '../../domain/math.repository';
 

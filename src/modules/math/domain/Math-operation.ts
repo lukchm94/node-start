@@ -1,5 +1,5 @@
-import { UnsupportedOperationError } from '../../../models/errors';
-import { Operations } from '../../../models/operations';
+import { UnsupportedOperationError } from '../../../shared/models/errors';
+import { Operations } from '../../../shared/models/operations';
 export type OperationType =
   | Operations.add
   | Operations.divide

@@ -1,14 +1,16 @@
 import express, { NextFunction, Request, Response, Router } from 'express';
+
+import { MathOperationsInput } from '../../../modules/math/application/calculate-math-operations/input';
+import { MathOperationsUseCase } from '../../../modules/math/application/calculate-math-operations/use-case';
+import { MathService } from '../../../modules/math/domain/service/math-service';
+import { MathRepositoryImpl } from '../../../modules/math/infrastructure/repositories/math.repository.impl';
 import { v2GetParams, validateNum } from '../../controllers/mathOperations';
-import { MathOperationsInput } from '../../modules/math/application/calculate-math-operations/input';
-import { MathOperationsUseCase } from '../../modules/math/application/calculate-math-operations/use-case';
-import { MathService } from '../../modules/math/domain/service/math-service';
-import { MathRepositoryImpl } from '../../modules/math/infrastructure/repositories/math.repository.impl';
 import { Routes } from '../routes';
 
 const router: Router = express.Router();
 const mathRepository = new MathRepositoryImpl();
 const mathService = new MathService(mathRepository);
+
 const mathUseCase = new MathOperationsUseCase(mathService);
 
 /**

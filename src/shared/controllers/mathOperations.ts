@@ -1,11 +1,13 @@
 import { Request } from 'express';
+// import { MathOperationsInput } from '../../modules/math/application/calculate-math-operations/input';
+import { MathOperationsInput } from '../../modules/math/application/calculate-math-operations/input';
+
 import {
   InvalidNumbersError,
   UnsupportedOperationError,
 } from '../models/errors';
 import { MathOperation } from '../models/math';
 import { Operations } from '../models/operations';
-import { MathOperationsInput } from '../modules/math/application/calculate-math-operations/input';
 
 // TODO convert the functions to proper controllers class
 const formatAdd = (operation: string): Operations | undefined => {
